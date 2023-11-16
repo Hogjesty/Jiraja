@@ -1,0 +1,4 @@
+<!-- <input type="checkbox"> -->
+<input type="checkbox" [ngModel]="todoData.isDone" (click)="toggleCheckbox()">
+<span [ngClass]="{'strikethrough-text': todoData.isDone}">{{todoData.title}}</span>
+<input class="delete-btn" type="button" (click)="onRemove()">
