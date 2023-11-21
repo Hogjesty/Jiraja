@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { PaginationConfig } from '../interfaces/PaginationConfig.interface';
+import { PaginationState } from '../interfaces/PaginationState.interface';
 
 @Pipe({
-  name: 'myPaginate'
+  name: 'myPaginate',
+  pure: false
 })
 export class MyPaginatePipe implements PipeTransform {
 
-  public transform<T>(value: T[], { itemsPerPage, currentPage }: PaginationConfig): T[] {
+  public transform<T>(value: T[], { itemsPerPage, currentPage }: PaginationState): T[] {
     if (!value || !value.length) {
       return value;
     }
@@ -16,5 +17,4 @@ export class MyPaginatePipe implements PipeTransform {
 
     return value.filter((value, index) => index >= toSkip && index < toSkip + toShow);
   }
-
 }

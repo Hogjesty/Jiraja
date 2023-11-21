@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {PaginationState} from "../../interfaces/PaginationState.interface";
 
 @Component({
   selector: 'app-pagination',
@@ -7,14 +8,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class PaginationComponent {
 
-  @Input() public size!: number;
-  @Input() public itemsPerPage!: number;
-
-  @Output() public currentPageUpdate: EventEmitter<number> = new EventEmitter();
-
-  public curentPage: number = 1;
+  @Input() public paginationState!: PaginationState;
+  @Output() public paginationStateChange: EventEmitter<PaginationState> = new EventEmitter();
 
   public onPageChange(): void {
-    this.currentPageUpdate.emit(this.curentPage);
+    this.paginationStateChange.emit(this.paginationState);
   }
 }

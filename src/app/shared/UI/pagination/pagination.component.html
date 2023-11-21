@@ -1,8 +1,8 @@
 <ngb-pagination
-    (click)="onPageChange()"
-    [collectionSize]="size"
-    [(page)]="curentPage"
-    [maxSize]="5"
-    [rotate]="true"
-    [boundaryLinks]="true">
+  (click)="onPageChange()"
+  [collectionSize]="paginationState.size"
+  [(page)]="paginationState.currentPage"
+  [pageSize]="paginationState.itemsPerPage"
+  [rotate]="true"
+  [boundaryLinks]="true">
 </ngb-pagination>

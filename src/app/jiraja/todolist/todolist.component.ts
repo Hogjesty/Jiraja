@@ -1,30 +1,21 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { PaginationConfig } from 'src/app/shared/interfaces/PaginationConfig.interface';
-import { Todo } from 'src/app/shared/interfaces/Todo.interface';
-import { LocalstorageService } from 'src/app/shared/services/localstorage.service';
+import {Component, EventEmitter, Inject, Input, Output} from '@angular/core';
+import {PaginationState} from 'src/app/shared/interfaces/PaginationState.interface';
+import {Todo} from 'src/app/shared/interfaces/Todo.interface';
+import {TODO_STORAGE_TOKEN, TodoStorageInterface} from "../../shared/services/storages/todo/todostorage.interface";
 
 @Component({
   selector: 'app-todolist',
   templateUrl: './todolist.component.html',
   styleUrls: ['./todolist.component.scss'],
-  providers: [LocalstorageService]
+
 })
-export class TodolistComponent implements OnInit {
-  
-  @Input() public paginationConfig!: PaginationConfig;
+export class TodolistComponent {
 
-  private static readonly TODOS_KEY = "todos array";
+  @Input() public paginationState!: PaginationState;
+  @Output() public paginationStateChange: EventEmitter<PaginationState> = new EventEmitter();
 
-  public todos!: Array<Todo>;
-  
-
-  public constructor(private storage: LocalstorageService<Array<Todo>>) {
-
-  }
-
-  public ngOnInit(): void {
-    this.todos = this.storage.get(TodolistComponent.TODOS_KEY);
-  }
+  @Input() public todos!: Array<Todo>;
+  @Output() public todosChange: EventEmitter<Array<Todo>> = new EventEmitter();
 
   public createNewTodo(titleForNewTodo: string): void {
     const newTodo: Todo = {
@@ -33,18 +24,17 @@ export class TodolistComponent implements OnInit {
       isDone: false
     }
 
-    let todosArray: Array<Todo> = this.storage.get(TodolistComponent.TODOS_KEY);
-
-    todosArray.push(newTodo);
-
-    this.todos = todosArray;
-
-    this.storage.put(TodolistComponent.TODOS_KEY, todosArray);
+    this.todos.push(newTodo);
+    this.todosChange.emit(this.todos);
+    this.paginationState.size = this.todos.length;
+    this.paginationStateChange.emit(this.paginationState);
   }
 
   public removeTodoById(id: number): void {
     this.todos = this.todos.filter(todo => todo.id !== id);
-    this.storage.put(TodolistComponent.TODOS_KEY, this.todos);
+    this.todosChange.emit(this.todos);
+    this.paginationState.size = this.todos.length;
+    this.paginationStateChange.emit(this.paginationState);
   }
 
   public updateTodo(todo: Todo): void {
@@ -54,6 +44,8 @@ export class TodolistComponent implements OnInit {
       this.todos[index] = Object.assign({}, this.todos[index], todo);
     }
 
-    this.storage.put(TodolistComponent.TODOS_KEY, this.todos);
+    this.todosChange.emit(this.todos);
+    this.paginationState.size = this.todos.length;
+    this.paginationStateChange.emit(this.paginationState);
   }
 }

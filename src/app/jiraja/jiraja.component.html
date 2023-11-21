@@ -1,5 +1,11 @@
 <app-todoinput (title)="addTodo($event)"></app-todoinput>
 
-<app-todolist [paginationConfig]="paginationConfig"></app-todolist>
+<app-todolist
+  [todos]="todos"
+  (todosChange)="updateTodos($event)"
+  [(paginationState)]="paginationState">
+</app-todolist>
 
-<app-pagination ></app-pagination>
+<app-pagination
+  [(paginationState)]="paginationState">
+</app-pagination>
