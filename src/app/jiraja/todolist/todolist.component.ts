@@ -15,7 +15,9 @@ export class TodolistComponent {
   @Output() public paginationStateChange: EventEmitter<PaginationState> = new EventEmitter();
 
   @Input() public todos!: Array<Todo>;
-  @Output() public todosChange: EventEmitter<Array<Todo>> = new EventEmitter();
+
+  public constructor(@Inject(TODO_STORAGE_TOKEN) private storage: TodoStorageInterface) {
+  }
 
   public createNewTodo(titleForNewTodo: string): void {
     const newTodo: Todo = {
@@ -25,14 +27,22 @@ export class TodolistComponent {
     }
 
     this.todos.push(newTodo);
-    this.todosChange.emit(this.todos);
+    this.storage.add(newTodo);
+
     this.paginationState.size = this.todos.length;
     this.paginationStateChange.emit(this.paginationState);
   }
 
   public removeTodoById(id: number): void {
-    this.todos = this.todos.filter(todo => todo.id !== id);
-    this.todosChange.emit(this.todos);
+    let idToRemove: number = 0;
+
+    this.todos = this.todos.filter(todo => {
+      const isIdNotEquals = todo.id !== id;
+      idToRemove = !isIdNotEquals ? todo.id : 0;
+      return isIdNotEquals;
+    });
+
+    this.storage.remove(idToRemove);
     this.paginationState.size = this.todos.length;
     this.paginationStateChange.emit(this.paginationState);
   }
@@ -42,10 +52,9 @@ export class TodolistComponent {
 
     if (index !== -1) {
       this.todos[index] = Object.assign({}, this.todos[index], todo);
+      this.storage.update(this.todos[index]);
+      this.paginationState.size = this.todos.length;
+      this.paginationStateChange.emit(this.paginationState);
     }
-
-    this.todosChange.emit(this.todos);
-    this.paginationState.size = this.todos.length;
-    this.paginationStateChange.emit(this.paginationState);
   }
 }

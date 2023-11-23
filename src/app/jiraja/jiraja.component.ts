@@ -11,7 +11,7 @@ import {TODO_STORAGE_TOKEN, TodoStorageInterface} from "../shared/services/stora
 })
 export class JirajaComponent implements OnInit, AfterViewInit {
 
-  @ViewChild(TodolistComponent) public todoList!: TodolistComponent;
+  @ViewChild(TodolistComponent, {static: true}) public todoList!: TodolistComponent;
 
   public paginationState!: PaginationState;
   public todos!: Array<Todo>;
@@ -34,9 +34,5 @@ export class JirajaComponent implements OnInit, AfterViewInit {
 
   public addTodo(titleData: string): void {
     this.todoList.createNewTodo(titleData);
-  }
-
-  public updateTodos(event: Array<Todo>): void {
-    this.storage.updateAll(event);
   }
 }
