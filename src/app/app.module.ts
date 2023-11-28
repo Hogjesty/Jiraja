@@ -5,8 +5,7 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {JirajaModule} from './jiraja/jiraja.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {TodoLocalStorageService} from "./shared/services/storages/todo/todolocalstorage.service";
-import {TODO_STORAGE_TOKEN} from "./shared/services/storages/todo/todostorage.interface";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -16,7 +15,8 @@ import {TODO_STORAGE_TOKEN} from "./shared/services/storages/todo/todostorage.in
     BrowserModule,
     AppRoutingModule,
     JirajaModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   bootstrap: [AppComponent]
 })
