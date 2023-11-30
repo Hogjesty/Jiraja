@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {LoaderToggleSwitchService} from "../services/loader-toggle-switch.service";
 
 @Component({
@@ -7,9 +7,5 @@ import {LoaderToggleSwitchService} from "../services/loader-toggle-switch.servic
   styleUrls: ['./loader.component.scss']
 })
 export class LoaderComponent {
-
-  public constructor(public loaderService: LoaderToggleSwitchService) {
-  }
-
-
+  public constructor(public loaderService: LoaderToggleSwitchService) {}
 }
