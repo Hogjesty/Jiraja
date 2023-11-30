@@ -1,29 +1,13 @@
 import {Injectable} from '@angular/core';
 import {Todo} from "../../../interfaces/Todo.interface";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {paths} from "../../../../jiraja/constances/paths";
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoApiStorageService {
-
-  private readonly url = 'http://localhost:8080/api';
-  private readonly paths = {
-    todo: {
-      create: '/todo/create',
-      get: '/todo/get',
-      getAll: '/todo/get-all',
-      update: '/todo/update',
-      delete: '/todo/delete',
-      patch: '/todo/patch',
-    }
-  }
-
-  private readonly headers: HttpHeaders = new HttpHeaders({
-      'charset': 'utf-8',
-      'Content-Type': 'application/json'
-  });
 
   public constructor(private httpClient: HttpClient) {
   }
@@ -33,30 +17,30 @@ export class TodoApiStorageService {
     const body = JSON.stringify(todoAdd);
     console.log(body)
 
-    return this.httpClient.post<void>(`${this.url}${this.paths.todo.create}`, body, {headers: this.headers});
+    return this.httpClient.post<void>(paths.todo.create, body);
   }
 
   public get(id: number): Observable<Todo> {
     const httpParams = new HttpParams();
     httpParams.set('id', id);
 
-    return this.httpClient.get<Todo>(`${this.url}${this.paths.todo.get}`, {params:httpParams, headers: this.headers});
+    return this.httpClient.get<Todo>(paths.todo.get, {params:httpParams});
   }
 
   public getAll(): Observable<Array<Todo>> {
-    return this.httpClient.get<Array<Todo>>(`${this.url}${this.paths.todo.getAll}`, {headers: this.headers});
+    return this.httpClient.get<Array<Todo>>(paths.todo.getAll);
   }
 
   public remove(id: number): Observable<void> {
     const httpParams = new HttpParams().append('id', id)
 
-    return this.httpClient.delete<void>(`${this.url}${this.paths.todo.delete}`, {params:httpParams, headers: this.headers});
+    return this.httpClient.delete<void>(paths.todo.delete, {params:httpParams});
   }
 
   public update(todoUpdate: Todo): Observable<void> {
     const body = JSON.stringify(todoUpdate);
 
-    return this.httpClient.put<void>(`${this.url}${this.paths.todo.update}`, body, {headers: this.headers});
+    return this.httpClient.put<void>(paths.todo.update, body);
   }
 
   // public updateAll(todosUpdate: Array<Todo>): Observable<void> {

@@ -5,8 +5,9 @@ import {FormsModule} from '@angular/forms';
 import {TodoinputComponent} from './todoinput/todoinput.component';
 import {TodolistComponent} from './todolist/todolist.component';
 import {TodoComponent} from './todolist/todo/todo.component';
-import {SharedModule} from '../shared/shared.module';
-import {HttpClient} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient} from "@angular/common/http";
+import {JirajaInterceptor} from "./interceptors/jiraja-interceptor.service";
+import {SharedModule} from "../shared/shared.module";
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {HttpClient} from "@angular/common/http";
     SharedModule
   ],
   providers: [
-    {provide: HttpClient}
+    {provide: HttpClient},
+    {provide: HTTP_INTERCEPTORS, useClass: JirajaInterceptor, multi: true}
   ],
   exports: [
     JirajaComponent

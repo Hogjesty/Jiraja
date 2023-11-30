@@ -5,7 +5,10 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {JirajaModule} from './jiraja/jiraja.module';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {SharedModule} from "./shared/shared.module";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {LoaderInterceptor} from "./shared/interceptors/loader.interceptor";
 
 @NgModule({
   declarations: [
@@ -16,9 +19,14 @@ import {HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     JirajaModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule,
+    BrowserAnimationsModule
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true}
+  ]
 })
 export class AppModule {
 }

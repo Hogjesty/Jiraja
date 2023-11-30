@@ -1,23 +1,28 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { PaginationComponent } from './UI/pagination/pagination.component';
-import { NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-import { MyPaginatePipe } from './pipes/my-paginate.pipe';
-
+import {NgModule} from '@angular/core';
+import {PaginationComponent} from './UI/pagination/pagination.component';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import {MyPaginatePipe} from './pipes/my-paginate.pipe';
+import {LoaderComponent} from './loader/loader.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {CommonModule} from "@angular/common";
 
 
 @NgModule({
   declarations: [
     PaginationComponent,
-    MyPaginatePipe
+    MyPaginatePipe,
+    LoaderComponent
   ],
   imports: [
-    CommonModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    MatProgressSpinnerModule,
+    CommonModule
   ],
   exports: [
     PaginationComponent,
-    MyPaginatePipe
+    MyPaginatePipe,
+    LoaderComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}
