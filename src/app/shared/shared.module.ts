@@ -5,24 +5,30 @@ import {MyPaginatePipe} from './pipes/my-paginate.pipe';
 import {LoaderComponent} from './loader/loader.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {CommonModule} from "@angular/common";
+import { ConfirmComponent } from './modals/confirm/confirm.component';
+import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 
 
 @NgModule({
   declarations: [
     PaginationComponent,
     MyPaginatePipe,
-    LoaderComponent
+    LoaderComponent,
+    ConfirmComponent
   ],
   imports: [
     NgbPaginationModule,
     MatProgressSpinnerModule,
-    CommonModule
+    CommonModule,
+    MatDialogModule
   ],
   exports: [
     PaginationComponent,
     MyPaginatePipe,
-    LoaderComponent
-  ]
+    LoaderComponent,
+    ConfirmComponent
+  ],
+
 })
 export class SharedModule {
 }

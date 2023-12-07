@@ -8,6 +8,7 @@ import {TodoComponent} from './todolist/todo/todo.component';
 import {HTTP_INTERCEPTORS, HttpClient} from "@angular/common/http";
 import {JirajaInterceptor} from "./interceptors/jiraja-interceptor.service";
 import {SharedModule} from "../shared/shared.module";
+import { MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -20,11 +21,12 @@ import {SharedModule} from "../shared/shared.module";
   imports: [
     CommonModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    MatDialogModule
   ],
   providers: [
     {provide: HttpClient},
-    {provide: HTTP_INTERCEPTORS, useClass: JirajaInterceptor, multi: true}
+    {provide: HTTP_INTERCEPTORS, useClass: JirajaInterceptor, multi: true},
   ],
   exports: [
     JirajaComponent

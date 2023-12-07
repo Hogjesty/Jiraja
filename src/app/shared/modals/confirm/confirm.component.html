@@ -1,0 +1,14 @@
+<div class="wrapper-modal">
+  <div class="confirm-modal">
+
+    <div class="header-modal">
+      <p class="text-header-modal">{{textForModal}}</p>
+    </div>
+
+    <div class="wrapper-buttons">
+      <button class="btn agree" (click)="closeModal(true)">Confirm</button>
+      <button class="btn disagree" (click)="closeModal(false)">Cancel</button>
+    </div>
+
+  </div>
+</div>

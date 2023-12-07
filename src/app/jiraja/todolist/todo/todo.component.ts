@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Todo } from 'src/app/shared/interfaces/Todo.interface';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Todo} from 'src/app/shared/interfaces/Todo.interface';
+import {MatDialog} from "@angular/material/dialog";
+import {ConfirmComponent} from "../../../shared/modals/confirm/confirm.component";
 
 @Component({
   selector: 'app-todo',
@@ -12,8 +14,14 @@ export class TodoComponent {
   @Output() public idToRemove: EventEmitter<number> = new EventEmitter();
   @Output() public todoToUpdate: EventEmitter<Todo> = new EventEmitter();
 
+  public constructor(public dialog: MatDialog) {}
+
   public onRemove(): void {
-    this.idToRemove.emit(this.todoData.id);
+    const matDialogRef = this.dialog.open(ConfirmComponent, {data: "Ви дійсно хочете?"});
+
+    matDialogRef.afterClosed().subscribe(isAgree => {
+      if (isAgree) this.idToRemove.emit(this.todoData.id);
+    });
   }
 
   public toggleCheckbox(): void {

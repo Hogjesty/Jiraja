@@ -13,9 +13,7 @@ export class TodoApiStorageService {
   }
 
   public add(todoAdd: Todo): Observable<void> {
-    console.log(todoAdd)
     const body = JSON.stringify(todoAdd);
-    console.log(body)
 
     return this.httpClient.post<void>(paths.todo.create, body);
   }
