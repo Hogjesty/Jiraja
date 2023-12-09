@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 80px;
+  width: 100%;
+
+  //background-color: rgb(52, 187, 15);
+
+  z-index: 1;
+
+  //.logo {
+  //  background-color: blue;
+  //  width: 60px;
+  //  height: 60px;
+  //}
+  //.links {
+  //  background-color: green;
+  //  width: calc(100vw - 200px);
+  //  height: 60px;
+  //}
+}

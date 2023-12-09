@@ -1,5 +1,5 @@
 :host {
-    margin: 50px auto;
+    margin: 0px auto;
     width: 500px;
     height: 800px;
     border: 5px solid #6E6E6E;
@@ -7,7 +7,7 @@
     background: linear-gradient(
         135deg,
         rgb(248, 248, 248) 25%, #fff 25%, #fff 50%,
-        rgb(248, 248, 248) 50%, 
+        rgb(248, 248, 248) 50%,
         rgb(248, 248, 248) 75%, #fff 75%, #fff
     );
     background-size: 100px 100px;
@@ -16,4 +16,3 @@
     align-items: center;
     justify-content: space-evenly;
 }
- 

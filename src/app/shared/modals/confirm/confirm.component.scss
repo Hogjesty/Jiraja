@@ -5,7 +5,6 @@
   width: 100%;
   height: 100%;
   background-color: rgba(256, 256, 256, 80%);
-  z-index: 1;
 
   .confirm-modal {
     margin: 0 auto;
@@ -13,15 +12,14 @@
     height: 300px;
     width: 500px;
     background-color: rgb(187, 15, 59);
-    box-shadow: inset 0 0 11px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     padding: 0 20px;
-
-    border-top: 8px solid rgb(249, 94, 107);
-    border-bottom: 8px solid rgb(96, 9, 8);
     border-radius: 20px;
+    box-shadow: inset 0 7px 6px 1px rgba(255, 255, 255, 0.5),
+    inset 10px -10px 20px 1px rgba(0, 0, 0, 0.5),
+    inset -10px -10px 20px 1px rgba(0, 0, 0, 0.5);
 
     .header-modal {
       width: 100%;
@@ -61,6 +59,7 @@
     .agree {
       background: linear-gradient(rgb(190, 223, 112), rgb(70, 129, 36));
     }
+
     .agree:active {
       background: linear-gradient(rgb(70, 129, 36), rgb(190, 223, 112));
     }
@@ -68,6 +67,7 @@
     .disagree {
       background: linear-gradient(rgb(240, 78, 107), rgb(150, 1, 19));
     }
+
     .disagree:active {
       background: linear-gradient(rgb(150, 1, 19), rgb(240, 78, 107));
     }
