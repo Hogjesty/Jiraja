@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import {PaginationState} from 'src/app/shared/interfaces/PaginationState.interface';
 import {Todo} from 'src/app/shared/interfaces/Todo.interface';
-import {TodoApiStorageService} from "../../shared/services/storages/todo/todo-api-storage.service";
+import {TodoApiStorageService} from "../../../shared/services/storages/todo/todo-api-storage.service";
 import {ReplaySubject, takeUntil} from "rxjs";
 
 @Component({

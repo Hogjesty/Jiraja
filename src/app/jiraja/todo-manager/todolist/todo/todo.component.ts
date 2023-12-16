@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Todo} from 'src/app/shared/interfaces/Todo.interface';
 import {MatDialog} from "@angular/material/dialog";
-import {ConfirmComponent} from "../../../shared/modals/confirm/confirm.component";
+import {ConfirmComponent} from "../../../../shared/modals/confirm/confirm.component";
 
 @Component({
   selector: 'app-todo',

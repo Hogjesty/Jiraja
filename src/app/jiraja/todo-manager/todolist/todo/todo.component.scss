@@ -1,15 +1,16 @@
-:host{
-    margin: 20px;
-    border: 2px solid #6E6E6E;
-    border-radius: 5px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+:host {
+  margin: 20px;
+  border: 2px solid #6E6E6E;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
 
 
   .delete-btn {
     background-color: red;
-    background-image: url("../../../../assets/jiraja/images/trash_bucket.png");
+    background-image: url("../../../../../assets/jiraja/images/trash_bucket.png");
     background-size: contain;
     width: 30px;
     height: 30px;
@@ -19,7 +20,7 @@
     cursor: pointer;
 
     &:active {
-        background-color: rgb(255, 190, 77);
+      background-color: rgb(255, 190, 77);
     }
   }
 

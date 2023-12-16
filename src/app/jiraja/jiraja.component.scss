@@ -1,18 +1,7 @@
 :host {
-    margin: 0px auto;
-    width: 500px;
-    height: 800px;
-    border: 5px solid #6E6E6E;
-    border-radius: 10px;
-    background: linear-gradient(
-        135deg,
-        rgb(248, 248, 248) 25%, #fff 25%, #fff 50%,
-        rgb(248, 248, 248) 50%,
-        rgb(248, 248, 248) 75%, #fff 75%, #fff
-    );
-    background-size: 100px 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+  width: 98.8%;
+  height: 97%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }

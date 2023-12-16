@@ -1,28 +1,20 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {JirajaComponent} from './jiraja.component';
-import {FormsModule} from '@angular/forms';
-import {TodoinputComponent} from './todoinput/todoinput.component';
-import {TodolistComponent} from './todolist/todolist.component';
-import {TodoComponent} from './todolist/todo/todo.component';
 import {HTTP_INTERCEPTORS, HttpClient} from "@angular/common/http";
 import {JirajaInterceptor} from "./interceptors/jiraja-interceptor.service";
-import {SharedModule} from "../shared/shared.module";
-import { MatDialogModule} from "@angular/material/dialog";
+import {TodoManagerModule} from "./todo-manager/todo-manager.module";
+import {TodoDetailsModule} from "./todo-details/todo-details.module";
 
 
 @NgModule({
   declarations: [
     JirajaComponent,
-    TodoinputComponent,
-    TodolistComponent,
-    TodoComponent
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    SharedModule,
-    MatDialogModule
+    TodoManagerModule,
+    TodoDetailsModule
   ],
   providers: [
     {provide: HttpClient},
