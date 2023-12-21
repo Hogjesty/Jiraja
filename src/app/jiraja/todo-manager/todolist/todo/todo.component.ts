@@ -23,9 +23,4 @@ export class TodoComponent {
       if (isAgree) this.idToRemove.emit(this.todoData.id);
     });
   }
-
-  public toggleCheckbox(): void {
-    this.todoData.isDone = !this.todoData.isDone;
-    this.todoToUpdate.emit(this.todoData);
-  }
 }

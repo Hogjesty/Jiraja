@@ -1,5 +1,5 @@
 <app-todo
-  *ngFor="let todo of todos | myPaginate: paginationState"
+  *ngFor="let todo of todos"
   [todoData]="todo"
   (idToRemove)="removeTodoById($event)"
   (todoToUpdate)="updateTodo($event)">

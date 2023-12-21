@@ -12,9 +12,6 @@ import {ReplaySubject, takeUntil} from "rxjs";
 })
 export class TodolistComponent implements OnDestroy {
 
-  @Input() public paginationState!: PaginationState;
-  @Output() public paginationStateChange: EventEmitter<PaginationState> = new EventEmitter();
-
   @Input() public todos!: Array<Todo>;
 
   private destroy$: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
@@ -26,15 +23,12 @@ export class TodolistComponent implements OnDestroy {
     const newTodo: Todo = {
       id: new Date().getTime(),
       title: titleForNewTodo,
-      isDone: false
+      status: 'todo',
     }
 
     this.todos.push(newTodo);
 
     this.storage.add(newTodo).pipe(takeUntil(this.destroy$)).subscribe();
-
-    this.paginationState.size = this.todos.length;
-    this.paginationStateChange.emit(this.paginationState);
   }
 
   public removeTodoById(id: number): void {
@@ -47,8 +41,6 @@ export class TodolistComponent implements OnDestroy {
     });
 
     this.storage.remove(idToRemove).pipe(takeUntil(this.destroy$)).subscribe();
-    this.paginationState.size = this.todos.length;
-    this.paginationStateChange.emit(this.paginationState);
   }
 
   public updateTodo(todo: Todo): void {
@@ -57,8 +49,6 @@ export class TodolistComponent implements OnDestroy {
     if (index !== -1) {
       this.todos[index] = Object.assign({}, this.todos[index], todo);
       this.storage.update(this.todos[index]).pipe(takeUntil(this.destroy$)).subscribe();
-      this.paginationState.size = this.todos.length;
-      this.paginationStateChange.emit(this.paginationState);
     }
   }
 
