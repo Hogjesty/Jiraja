@@ -1,0 +1,6 @@
+<div class="dropdown-label">{{currentOption}}</div>
+<div class="dropdown-content">
+  <span *ngFor="let option of options"
+        (click)="onChoose(option)">{{option}}
+  </span>
+</div>

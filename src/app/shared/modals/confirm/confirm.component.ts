@@ -7,6 +7,7 @@ import {MAT_DIALOG_DATA, MatDialogModule, MatDialogRef} from "@angular/material/
   styleUrls: ['./confirm.component.scss']
 })
 export class ConfirmComponent {
+
   public constructor(private dialogRef: MatDialogRef<ConfirmComponent>, @Inject(MAT_DIALOG_DATA) public textForModal: string) {
   }
 

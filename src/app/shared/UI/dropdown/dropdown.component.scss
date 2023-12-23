@@ -1,0 +1,42 @@
+:host {
+  font-size: 12px;
+  user-select: none;
+  cursor: pointer;
+
+  .dropdown-label {
+    background-color: #416542;
+    color: #fff;
+    padding: 3px 12px;
+    border: 3px solid rgb(94, 5, 23);
+    border-radius: 33px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #416542;
+    min-width: 80px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    border: 3px solid rgb(94, 5, 23);
+    border-radius: 5px;
+  }
+
+  .dropdown-content span {
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown-content span:hover {
+    background-color: #88e336;
+    color: #000;
+  }
+}
+
+:host:hover .dropdown-content {
+  display: block;
+}
+
+:host:hover .dropdown-label{
+  background-color: #3e8e41;
+}

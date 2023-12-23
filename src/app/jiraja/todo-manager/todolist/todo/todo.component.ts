@@ -14,10 +14,17 @@ export class TodoComponent {
   @Output() public idToRemove: EventEmitter<number> = new EventEmitter();
   @Output() public todoToUpdate: EventEmitter<Todo> = new EventEmitter();
 
+  public options: Array<string> = ['todo', 'progress', 'testing', 'done'];
+
   public constructor(public dialog: MatDialog) {}
 
+  public onTodoDataChange(option: string): void {
+    this.todoData.status = option;
+    this.todoToUpdate.emit(this.todoData);
+  }
+
   public onRemove(): void {
-    const matDialogRef = this.dialog.open(ConfirmComponent, {data: "Ви дійсно хочете?"});
+    const matDialogRef = this.dialog.open(ConfirmComponent, {data: "Do u really wanna delete this thing?"});
 
     matDialogRef.afterClosed().subscribe(isAgree => {
       if (isAgree) this.idToRemove.emit(this.todoData.id);

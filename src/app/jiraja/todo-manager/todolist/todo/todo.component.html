@@ -1,4 +1,9 @@
 <div class="wrapper-todo" [ngClass]="'todo-status-' + todoData.status">
+  <app-dropdown
+    [options]="options"
+    [currentOption]="todoData.status"
+    (onChooseEmitter)="onTodoDataChange($event)"
+  ></app-dropdown>
   <span>{{todoData.title}}</span>
   <input class="delete-btn" type="button" (click)="onRemove()">
 </div>

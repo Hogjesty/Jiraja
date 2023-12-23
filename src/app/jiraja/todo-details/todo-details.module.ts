@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TodoDetailsComponent} from "./todo-details.component";
+import {SharedModule} from "../../shared/shared.module";
 
 
 
@@ -9,7 +10,8 @@ import {TodoDetailsComponent} from "./todo-details.component";
     TodoDetailsComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule
   ],
   exports: [
     TodoDetailsComponent

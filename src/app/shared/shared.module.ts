@@ -7,6 +7,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {CommonModule} from "@angular/common";
 import { ConfirmComponent } from './modals/confirm/confirm.component';
 import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import { DropdownComponent } from './UI/dropdown/dropdown.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog
     PaginationComponent,
     MyPaginatePipe,
     LoaderComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    DropdownComponent
   ],
   imports: [
     NgbPaginationModule,
@@ -22,12 +24,13 @@ import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog
     CommonModule,
     MatDialogModule
   ],
-  exports: [
-    PaginationComponent,
-    MyPaginatePipe,
-    LoaderComponent,
-    ConfirmComponent
-  ],
+    exports: [
+        PaginationComponent,
+        MyPaginatePipe,
+        LoaderComponent,
+        ConfirmComponent,
+        DropdownComponent
+    ],
 
 })
 export class SharedModule {
