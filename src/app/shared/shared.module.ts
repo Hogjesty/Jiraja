@@ -8,6 +8,7 @@ import {CommonModule} from "@angular/common";
 import { ConfirmComponent } from './modals/confirm/confirm.component';
 import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import { DropdownComponent } from './UI/dropdown/dropdown.component';
+import { ButtonComponent } from './UI/button/button.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { DropdownComponent } from './UI/dropdown/dropdown.component';
     MyPaginatePipe,
     LoaderComponent,
     ConfirmComponent,
-    DropdownComponent
+    DropdownComponent,
+    ButtonComponent
   ],
   imports: [
     NgbPaginationModule,
@@ -29,7 +31,8 @@ import { DropdownComponent } from './UI/dropdown/dropdown.component';
         MyPaginatePipe,
         LoaderComponent,
         ConfirmComponent,
-        DropdownComponent
+        DropdownComponent,
+        ButtonComponent
     ],
 
 })
