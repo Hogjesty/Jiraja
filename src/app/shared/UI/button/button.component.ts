@@ -8,20 +8,25 @@ import {BtnStyles, RgbArray} from "../../interfaces/BtnStyles";
 })
 export class ButtonComponent implements AfterViewInit {
 
-  @Input() public btnStyles: Partial<BtnStyles> = {
+  @Input() public btnStyles: BtnStyles = {};
+
+  private currentBtnStyles: Required<BtnStyles> = {
     'width': 185,
     'height': 60,
-    'color': [255, 255, 255],
+    'color': [0, 0, 0],
     'background': [70, 129, 36],
-    'font-size': 12
+    'font-size': 17
   };
 
   @ViewChild('btn') private btn!: ElementRef;
 
-  public constructor(private renderer2: Renderer2) { }
+  public constructor(private renderer2: Renderer2) {
+  }
 
   public ngAfterViewInit(): void {
-    for (let [style, rawValue] of Object.entries(this.btnStyles)) {
+    Object.assign(this.currentBtnStyles, this.btnStyles);
+
+    for (let [style, rawValue] of Object.entries(this.currentBtnStyles)) {
       let value = `${rawValue}px`;
       if (style === 'color') {
         value = this.arrayToRgb(rawValue as RgbArray);
@@ -35,14 +40,14 @@ export class ButtonComponent implements AfterViewInit {
 
   @HostListener('mousedown')
   private onMouseDown(): void {
-    const gradient = this.makeLinearGradientRule(this.btnStyles.background as Array<number>, true);
+    const gradient = this.makeLinearGradientRule(this.currentBtnStyles.background as Array<number>, true);
     this.setStyle('background', gradient);
   }
 
   @HostListener('mouseup')
   @HostListener('mouseleave')
-  private onMouseUp(): void {
-    const gradient = this.makeLinearGradientRule(this.btnStyles.background as Array<number>);
+  private onMouseUpOrLeave(): void {
+    const gradient = this.makeLinearGradientRule(this.currentBtnStyles.background as Array<number>);
     this.setStyle('background', gradient);
   }
 

@@ -6,10 +6,8 @@
     </div>
 
     <div class="wrapper-buttons">
-<!--      <button class="btn agree" (click)="closeModal(true)">Confirm</button>-->
-<!--      <button class="btn disagree" (click)="closeModal(false)">Cancel</button>-->
       <app-button (click)="closeModal(true)">Confirm</app-button>
-      <app-button (click)="closeModal(false)">Cancel</app-button>
+      <app-button [btnStyles]="cancelBtnStyles" (click)="closeModal(false)">Cancel</app-button>
     </div>
 
   </div>
