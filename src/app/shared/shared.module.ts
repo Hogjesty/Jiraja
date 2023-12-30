@@ -9,6 +9,9 @@ import { ConfirmComponent } from './modals/confirm/confirm.component';
 import {MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
 import { DropdownComponent } from './UI/dropdown/dropdown.component';
 import { ButtonComponent } from './UI/button/button.component';
+import { CreateTodoModalComponent } from './modals/create-todo-modal/create-todo-modal.component';
+import { InputComponent } from './UI/input/input.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -18,13 +21,17 @@ import { ButtonComponent } from './UI/button/button.component';
     LoaderComponent,
     ConfirmComponent,
     DropdownComponent,
-    ButtonComponent
+    ButtonComponent,
+    CreateTodoModalComponent,
+    InputComponent
   ],
   imports: [
     NgbPaginationModule,
     MatProgressSpinnerModule,
     CommonModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
     exports: [
         PaginationComponent,
@@ -32,7 +39,8 @@ import { ButtonComponent } from './UI/button/button.component';
         LoaderComponent,
         ConfirmComponent,
         DropdownComponent,
-        ButtonComponent
+        ButtonComponent,
+        InputComponent
     ],
 
 })

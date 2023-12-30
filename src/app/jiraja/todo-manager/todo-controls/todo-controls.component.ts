@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {BtnStyles} from "../../../shared/interfaces/BtnStyles";
 
 @Component({
   selector: 'app-todo-controls',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoControlsComponent implements OnInit {
 
-  constructor() { }
+  public btnStyles: BtnStyles = {
+    width: 350
+  };
 
-  ngOnInit(): void {
+  public constructor() { }
+
+  public ngOnInit(): void {
   }
 
 }
