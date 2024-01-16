@@ -1,4 +1,48 @@
-<form [formGroup]="newTodoFormGroup">
-  <app-input formControlName="title"></app-input>
-  <input formControlName="title">
-</form>
+<div class="wrapper-modal">
+
+  <div class="box-center-focuser">
+    <div class="create-todo-modal">
+      <form [formGroup]="newTodoFormGroup">
+        <p class="header-text">Create new todo</p>
+        <div class="wrapper-input">
+          <span>Title:</span>
+          <app-input formControlName="title" ngDefaultControl></app-input>
+        </div>
+        <div class="wrapper-input">
+          <span>Status:</span>
+          <app-select></app-select>
+<!--          <app-input formControlName="status" ngDefaultControl></app-input>-->
+        </div>
+        <div class="wrapper-input">
+          <span>Priority:</span>
+<!--          <app-input formControlName="priority" ngDefaultControl></app-input>-->
+        </div>
+        <div class="wrapper-input">
+          <span>Executor:</span>
+          <app-input formControlName="executor" ngDefaultControl></app-input>
+        </div>
+        <div class="wrapper-input">
+          <span>Todo Relations:</span>
+          <app-input formControlName="todoRelations" ngDefaultControl></app-input>
+        </div>
+        <div class="wrapper-input">
+          <span>Spent Time:</span>
+          <app-input formControlName="spentTime" ngDefaultControl></app-input>
+        </div>
+        <div class="wrapper-input">
+          <span>Estimates:</span>
+          <app-input formControlName="estimates" ngDefaultControl></app-input>
+        </div>
+        <div class="wrapper-input">
+          <span>Description:</span>
+          <textarea formControlName="description"></textarea>
+        </div>
+        <div class="wrapper-buttons">
+          <app-button (click)="closeModal(true)">Create</app-button>
+          <app-button [btnStyles]="cancelBtnStyles" (click)="closeModal(false)">Cancel</app-button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>

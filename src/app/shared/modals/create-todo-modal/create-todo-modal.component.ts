@@ -1,8 +1,7 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {BtnStyles} from "../../interfaces/BtnStyles";
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {Todo} from "../../interfaces/Todo.interface";
-import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatDialogRef} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-create-todo-modal',
@@ -10,9 +9,10 @@ import {FormControl, FormGroup, Validator, Validators} from "@angular/forms";
   styleUrls: ['./create-todo-modal.component.scss']
 })
 export class CreateTodoModalComponent implements OnInit {
+  public cancelBtnStyles: BtnStyles = {background: [150, 1, 19]};
 
   public newTodoFormGroup: FormGroup = new FormGroup({
-    title: new FormControl('', [
+    title: new FormControl('123', [
       Validators.maxLength(30),
       Validators.minLength(5),
       Validators.required,
@@ -21,11 +21,10 @@ export class CreateTodoModalComponent implements OnInit {
     description: new FormControl('', Validators.maxLength(30)),
     priority: new FormControl(''),
     executor: new FormControl(''),
-    todoRelations: new FormControl([]),
+    todoRelations: new FormControl(''),
+    estimates: new FormControl(''),
     spentTime: new FormControl('', Validators.pattern('\d+')),
   })
-
-  public cancelBtnStyles: BtnStyles = {background: [150, 1, 19]};
 
   public constructor(private dialogRef: MatDialogRef<CreateTodoModalComponent>) {
   }
@@ -33,8 +32,8 @@ export class CreateTodoModalComponent implements OnInit {
   public ngOnInit(): void {
   }
 
-  public closeModal(isAgree: boolean): void {
-    this.dialogRef.close(isAgree);
+  public closeModal(isConfirmed: boolean): void {
+    console.log(this.newTodoFormGroup.value)
+    this.dialogRef.close(isConfirmed ? this.newTodoFormGroup.value : null);
   }
-
 }

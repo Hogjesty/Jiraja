@@ -19,18 +19,6 @@ export class TodolistComponent implements OnDestroy {
   public constructor(private storage: TodoApiStorageService) {
   }
 
-  public createNewTodo(titleForNewTodo: string): void {
-    const newTodo: Todo = {
-      id: new Date().getTime(),
-      title: titleForNewTodo,
-      status: 'todo',
-    }
-
-    this.todos.push(newTodo);
-
-    this.storage.add(newTodo).pipe(takeUntil(this.destroy$)).subscribe();
-  }
-
   public removeTodoById(id: number): void {
     let idToRemove: number = 0;
 

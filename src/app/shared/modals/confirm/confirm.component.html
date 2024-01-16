@@ -1,14 +1,16 @@
 <div class="wrapper-modal">
-  <div class="confirm-modal">
+  <div class="box-center-focuser">
+    <div class="confirm-modal">
 
-    <div class="header-modal">
-      <p class="text-header-modal">{{textForModal}}</p>
+      <div class="header-modal">
+        <p class="text-header-modal">{{textForModal}}</p>
+      </div>
+
+      <div class="wrapper-buttons">
+        <app-button (click)="closeModal(true)">Confirm</app-button>
+        <app-button [btnStyles]="cancelBtnStyles" (click)="closeModal(false)">Cancel</app-button>
+      </div>
+
     </div>
-
-    <div class="wrapper-buttons">
-      <app-button (click)="closeModal(true)">Confirm</app-button>
-      <app-button [btnStyles]="cancelBtnStyles" (click)="closeModal(false)">Cancel</app-button>
-    </div>
-
   </div>
 </div>
