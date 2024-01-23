@@ -10,20 +10,23 @@
         </div>
         <div class="wrapper-input">
           <span>Status:</span>
-          <app-select></app-select>
-<!--          <app-input formControlName="status" ngDefaultControl></app-input>-->
+          <app-select [options]="TODO_STATUSES" formControlName="status" ngDefaultControl></app-select>
         </div>
         <div class="wrapper-input">
           <span>Priority:</span>
-<!--          <app-input formControlName="priority" ngDefaultControl></app-input>-->
+          <app-select [options]="TODO_PRIORITIES" formControlName="priority" ngDefaultControl></app-select>
         </div>
         <div class="wrapper-input">
           <span>Executor:</span>
           <app-input formControlName="executor" ngDefaultControl></app-input>
         </div>
         <div class="wrapper-input">
-          <span>Todo Relations:</span>
-          <app-input formControlName="todoRelations" ngDefaultControl></app-input>
+          <span>Is blocked by:</span>
+          <app-input formControlName="isBlockedBy" ngDefaultControl></app-input>
+        </div>
+        <div class="wrapper-input">
+          <span>Blocks:</span>
+          <app-input formControlName="blocks" ngDefaultControl></app-input>
         </div>
         <div class="wrapper-input">
           <span>Spent Time:</span>

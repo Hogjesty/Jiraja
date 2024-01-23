@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {TodoDetailsSubjectService} from "../../shared/services/subjects/todo-details-subject.service";
+import {switchMap} from "rxjs";
 
 @Component({
   selector: 'app-todo-details',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoDetailsComponent implements OnInit {
 
-  public constructor() { }
+  public constructor(private todoDetailsSubjectService:TodoDetailsSubjectService) { }
 
   public ngOnInit(): void {
+    this.todoDetailsSubjectService.todoDetailsSubject
+    //   .pipe(switchMap((todoId: number, index: number) => {
+    //     return service.getTodoDetails(todoId);
+    //   }))
+    //   .subscribe((todoId: number) => {
+    //
+    // });
   }
 
 }

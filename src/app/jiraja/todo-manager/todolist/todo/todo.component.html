@@ -1,4 +1,4 @@
-<div class="wrapper-todo" [ngClass]="'todo-status-' + todoData.status">
+<div class="wrapper-todo" [ngClass]="'todo-status-' + todoData.status" (click)="loadTodoDetails()">
   <app-dropdown
     [options]="options"
     [currentOption]="todoData.status"

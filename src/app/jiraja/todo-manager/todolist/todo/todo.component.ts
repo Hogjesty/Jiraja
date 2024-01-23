@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Todo} from 'src/app/shared/interfaces/Todo.interface';
 import {MatDialog} from "@angular/material/dialog";
 import {ConfirmComponent} from "../../../../shared/modals/confirm/confirm.component";
+import {TodoDetailsSubjectService} from "../../../../shared/services/subjects/todo-details-subject.service";
 
 @Component({
   selector: 'app-todo',
@@ -16,7 +17,7 @@ export class TodoComponent {
 
   public options: Array<string> = ['todo', 'progress', 'testing', 'done'];
 
-  public constructor(public dialog: MatDialog) {}
+  public constructor(private dialog: MatDialog, private todoDetailsSubjectService:TodoDetailsSubjectService) {}
 
   public onTodoDataChange(option: string): void {
     this.todoData.status = option;
@@ -29,5 +30,9 @@ export class TodoComponent {
     matDialogRef.afterClosed().subscribe(isAgree => {
       if (isAgree) this.idToRemove.emit(this.todoData.id);
     });
+  }
+
+  public loadTodoDetails(): void {
+    this.todoDetailsSubjectService.todoDetailsSubject.next(this.todoData.id);
   }
 }
