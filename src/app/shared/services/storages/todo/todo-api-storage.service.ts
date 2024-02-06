@@ -19,8 +19,7 @@ export class TodoApiStorageService {
   }
 
   public get(id: number): Observable<Todo> {
-    const httpParams = new HttpParams();
-    httpParams.set('id', id);
+    const httpParams = new HttpParams().append('id', id);
 
     return this.httpClient.get<Todo>(paths.todo.get, {params:httpParams});
   }
@@ -30,7 +29,7 @@ export class TodoApiStorageService {
   }
 
   public remove(id: number): Observable<void> {
-    const httpParams = new HttpParams().append('id', id)
+    const httpParams = new HttpParams().append('id', id);
 
     return this.httpClient.delete<void>(paths.todo.delete, {params:httpParams});
   }

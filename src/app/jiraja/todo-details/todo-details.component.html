@@ -1,0 +1,70 @@
+<p *ngIf="!currentTodo">Choose any todo</p>
+
+<form class="grid-container" [formGroup]="newTodoFormGroup" *ngIf="currentTodo">
+  <div class="header-container">
+    <div class="wrapper-id">
+      <span>ID: </span>
+      <span>{{currentTodo.id}}</span>
+      <div class="wrapper-copy-button">
+        <app-button [btnStyles]="btnStyles" (click)="onCopyIdButtonClick()">&#10065;</app-button>
+        <div class="popup">
+          Copy
+        </div>
+      </div>
+    </div>
+    <div class="wrapper-input">
+      <app-input formControlName="title" ngDefaultControl></app-input>
+    </div>
+  </div>
+  <div class="states-container">
+    <div class="wrapper-input">
+      <span>Status:</span>
+      <app-select [options]="TODO_STATUSES" formControlName="status" ngDefaultControl></app-select>
+    </div>
+    <div class="wrapper-input">
+      <span>Priority:</span>
+      <app-select [options]="TODO_PRIORITIES" formControlName="priority" ngDefaultControl></app-select>
+    </div>
+    <div class="wrapper-input">
+      <span>Is blocked by:</span>
+      <app-input formControlName="isBlockedBy" ngDefaultControl></app-input>
+    </div>
+    <div class="wrapper-input">
+      <span>Blocks:</span>
+      <app-input formControlName="blocks" ngDefaultControl></app-input>
+    </div>
+  </div>
+  <div class="people-container">
+    <div class="wrapper-input">
+      <span>Executor:</span>
+      <app-input formControlName="executor" ngDefaultControl></app-input>
+    </div>
+  </div>
+  <div class="description-container">
+    <div class="wrapper-input">
+      <span>Description:</span>
+      <textarea formControlName="description"></textarea>
+    </div>
+  </div>
+  <div class="time-container">
+    <div class="wrapper-input">
+      <span>Spent Time:</span>
+      <app-input formControlName="spentTime" ngDefaultControl></app-input>
+    </div>
+    <div class="wrapper-input">
+      <span>Estimates:</span>
+      <app-input formControlName="estimates" ngDefaultControl></app-input>
+    </div>
+  </div>
+  <div class="comments-container">
+    <div class="wrapper-input">
+      <span>Comments:</span>
+      <textarea formControlName="description"></textarea>
+    </div>
+  </div>
+  <div class="buttons-container">
+
+  </div>
+</form>
+
+
