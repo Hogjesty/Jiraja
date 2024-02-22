@@ -1,14 +1,16 @@
 :host {
-  font-size: 12px;
+  font-size: 16px;
   user-select: none;
   cursor: pointer;
+  text-shadow: none;
+  color: #fff;
 
   .dropdown-label {
     background-color: #416542;
-    color: #fff;
     padding: 3px 12px;
     border: 3px solid rgb(94, 5, 23);
     border-radius: 33px;
+    text-align: center;
   }
 
   .dropdown-content {
@@ -16,7 +18,7 @@
     position: absolute;
     background-color: #416542;
     min-width: 80px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     border: 3px solid rgb(94, 5, 23);
     border-radius: 5px;
   }

@@ -11,8 +11,4 @@ export class SelectComponent {
   @Input() public options:Array<string> = [];
 
   public constructor(@Self() private readonly ngControl: NgControl) { }
-
-  public get inputText(): string {
-    return this.ngControl.value;
-  }
 }

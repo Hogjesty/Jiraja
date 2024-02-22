@@ -15,8 +15,6 @@ export class TodoComponent {
   @Output() public idToRemove: EventEmitter<number> = new EventEmitter();
   @Output() public todoToUpdate: EventEmitter<Todo> = new EventEmitter();
 
-  public options: Array<string> = ['todo', 'progress', 'testing', 'done'];
-
   public constructor(private dialog: MatDialog, private todoDetailsSubjectService:TodoDetailsSubjectService) {}
 
   public onTodoDataChange(option: string): void {

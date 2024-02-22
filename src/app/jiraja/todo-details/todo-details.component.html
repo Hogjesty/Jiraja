@@ -1,4 +1,4 @@
-<p *ngIf="!currentTodo">Choose any todo</p>
+<script src="todo-details.component.ts"></script><p *ngIf="!currentTodo">Choose any todo</p>
 
 <form class="grid-container" [formGroup]="newTodoFormGroup" *ngIf="currentTodo">
   <div class="header-container">
@@ -6,32 +6,73 @@
       <span>ID: </span>
       <span>{{currentTodo.id}}</span>
       <div class="wrapper-copy-button">
-        <app-button [btnStyles]="btnStyles" (click)="onCopyIdButtonClick()">&#10065;</app-button>
-        <div class="popup">
-          Copy
-        </div>
+        <app-button [btnStyles]="copyBtnStyles" (click)="onCopyIdButtonClick()">&#10065;</app-button>
+        <div class="popup">Copy</div>
       </div>
     </div>
     <div class="wrapper-input">
-      <app-input formControlName="title" ngDefaultControl></app-input>
+      <ng-container *ngIf="titleIsBeingEdited; else titleText">
+        <div class="wrapper-input-edit">
+          <app-input formControlName="title" ngDefaultControl></app-input>
+          <div class="wrapper-save-button">
+            <app-button [btnStyles]="saveBtnStyles" (click)="onSaveTitleButtonClick()">&#10003;</app-button>
+            <div class="popup">Save</div>
+          </div>
+          <div class="wrapper-cancel-button">
+            <app-button [btnStyles]="cancelBtnStyles" (click)="onCancelTitleButtonClick()">&#10005;</app-button>
+            <div class="popup">Cancel</div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #titleText>
+        <span class="title-text">{{currentTodo.title}}</span>
+        <div class="wrapper-edit-button">
+          <app-button [btnStyles]="editBtnStyles" (click)="onEditTitleButtonClick()">&#9998;</app-button>
+          <div class="popup">Edit</div>
+        </div>
+      </ng-template>
     </div>
   </div>
   <div class="states-container">
     <div class="wrapper-input">
-      <span>Status:</span>
-      <app-select [options]="TODO_STATUSES" formControlName="status" ngDefaultControl></app-select>
+      <span>Status</span>
+      <app-dropdown
+        [options]="TODO_STATUSES"
+        [currentOption]="currentTodo.status"
+        formControlName="status">
+      </app-dropdown>
     </div>
     <div class="wrapper-input">
-      <span>Priority:</span>
-      <app-select [options]="TODO_PRIORITIES" formControlName="priority" ngDefaultControl></app-select>
+      <span>Priority</span>
+      <app-dropdown
+        [options]="TODO_PRIORITIES"
+        [currentOption]="currentTodo.priority"
+        formControlName="priority">
+      </app-dropdown>
     </div>
     <div class="wrapper-input">
-      <span>Is blocked by:</span>
-      <app-input formControlName="isBlockedBy" ngDefaultControl></app-input>
+      <span>Is blocked by</span>
+      <div class="grid-items">
+        <ng-container *ngIf="currentTodo.isBlockedBy?.length; else noneText">
+          <div *ngFor="let id of currentTodo.isBlockedBy" class="wrapper-item">{{id}}</div>
+        </ng-container>
+        <ng-template #noneText>
+          <span>None</span>
+        </ng-template>
+      </div>
+<!--      <app-input formControlName="isBlockedBy" ngDefaultControl></app-input>-->
     </div>
     <div class="wrapper-input">
-      <span>Blocks:</span>
-      <app-input formControlName="blocks" ngDefaultControl></app-input>
+      <span>Blocks</span>
+      <div class="grid-items" >
+        <ng-container *ngIf="currentTodo.isBlockedBy?.length; else noneText">
+          <div *ngFor="let id of currentTodo.blocks" class="wrapper-item">{{id}}</div>
+        </ng-container>
+        <ng-template #noneText>
+          <span>None</span>
+        </ng-template>
+      </div>
+<!--      <app-input formControlName="blocks" ngDefaultControl></app-input>-->
     </div>
   </div>
   <div class="people-container">
@@ -66,5 +107,3 @@
 
   </div>
 </form>
-
-

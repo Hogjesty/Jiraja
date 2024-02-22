@@ -24,6 +24,12 @@ export class TodoApiStorageService {
     return this.httpClient.get<Todo>(paths.todo.get, {params:httpParams});
   }
 
+  public getNames(ids: number[]): Observable<Map<number, string>> {
+    const httpParams = new HttpParams().append('ids', JSON.stringify(ids));
+
+    return this.httpClient.get<Map<number, string>>(paths.todo.names, {params:httpParams});
+  }
+
   public getAll(): Observable<Array<Todo>> {
     return this.httpClient.get<Array<Todo>>(paths.todo.getAll);
   }

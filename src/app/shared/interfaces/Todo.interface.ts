@@ -9,7 +9,7 @@ export interface Todo {
   watchers: string[],
   isBlockedBy: number[],
   blocks: number[],
-  estimate: string,
+  estimates: string,
   spentTime: string,
   creationDate: string,
   modificationDate: string,
